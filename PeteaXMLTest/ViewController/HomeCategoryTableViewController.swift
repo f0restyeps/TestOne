@@ -11,73 +11,52 @@ import Alamofire
 import SDWebImage
 import TagListView
 import NVActivityIndicatorView
+import Reachability
+import DZNEmptyDataSet
 
-class HomeCategoryTableViewController: UITableViewController,TagListViewDelegate
+class HomeCategoryTableViewController: UITableViewController,TagListViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate
 {
     var refreshCtl:UIRefreshControl!
     
     var activityIndicatorView: NVActivityIndicatorView!
+    var indicatorView: NVActivityIndicatorView!
     
+    let reachability = Reachability()
     
-    var titleArray: [String] = []
-    var titleArray2: [String] = []
-    var urlJsonArray: [String] = []
-    var urlArray: [String] = []
-    var dateArray: [String] = []
-    var authorArray: [String] = []
-    var thumbnailArray: [String] = []
-    var thumbnailJsonArray: [String] = []
-    var categoryArray: [[String]] = []
-    var tagArray: [[String]] = []
+    var titleArray: [String] = ["",""]
+    var urlJsonArray: [String] = ["",""]
+    var urlArray: [String] = ["",""]
+    var dateArray: [String] = ["",""]
+    var authorArray: [String] = ["",""]
+    var thumbnailArray: [String] = ["",""]
+    var thumbnailJsonArray: [String] = ["",""]
+    var categoryArray: [[String]] = [[""],[""]]
+    var tagArray: [[String]] = [[""],[""]]
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        UserDefaults.standard.removeObject(forKey: "INDEX_PATH")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.emptyDataSetSource = self
+        
+        tableView.separatorStyle = .none
+        tableView.reloadData()
+        confirmNetworkConnection()
+
+    }
+
     override func viewDidLoad()
     {
-        super.viewDidLoad()
         
         setIndicator()
         activityIndicatorView.startAnimating()
-        
-        tableView.separatorStyle = .none
 
         DispatchQueue.main.async
             {
                 self.setRefreshControl()
         }
-
-        DispatchQueue.global().async
-            {
-                self.request()
-        }
-        
-        AlamofireRequest(requestUrl: "https://petea.jp/json")
-        
-    }
-
-    
-    func setIndicator()
-    {
-        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30, y: self.view.frame.height / 2 - 60 - 50 , width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)
-
-        view.addSubview(activityIndicatorView)
-    }
-    
-    func setRefreshControl()
-    {
-        refreshCtl = UIRefreshControl()
-        refreshCtl.tintColor = UIColor.lightGray
-        refreshCtl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
-        tableView.addSubview(refreshCtl)
-    }
-    
-    @objc func refresh()
-    {
-        perform(#selector(delay), with: nil, afterDelay: 2.0)
-    }
-    
-    @objc func delay()
-    {
-        tableView.reloadData()
-        refreshCtl.endRefreshing()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -105,16 +84,45 @@ class HomeCategoryTableViewController: UITableViewController,TagListViewDelegate
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return titleArray.count
+        
+        if titleArray.count == 0
+        {
+            return 0
+        }
+        else
+        {
+            return titleArray.count
+        }
+ 
+    }
+    
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = "読み込みに失敗しました\n"
+        let font = UIFont.systemFont(ofSize: 22)
+        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = "通信状況を確認して下さい\n"
+        let font = UIFont.systemFont(ofSize: 16)
+        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
+    {
+        return UIImage(named: "OOPS")
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
         switch indexPath.row
         {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell", for: indexPath) as! SliderTableViewCell
+            
             return cell
             
         case 1:
@@ -164,7 +172,6 @@ class HomeCategoryTableViewController: UITableViewController,TagListViewDelegate
                 cell.newsDateLabel.backgroundColor = UIColor.white
                 cell.newsDateLabel.textColor = UIColor.lightGray
             }
-    
             return cell
         }
     }
@@ -187,6 +194,8 @@ class HomeCategoryTableViewController: UITableViewController,TagListViewDelegate
     
     func request()
     {
+        self.activityIndicatorView.startAnimating()
+        
         let requestUrl = "https://petea.jp/json"
         
         Alamofire.request(requestUrl,
@@ -228,21 +237,61 @@ class HomeCategoryTableViewController: UITableViewController,TagListViewDelegate
                     
                     DispatchQueue.main.async
                         {
+                            self.tableView.isHidden = false
                             self.tableView.separatorStyle = .singleLine
                             self.tableView.reloadData()
                             self.activityIndicatorView.stopAnimating()
                     }
                 }
-                //Print array.
-                print("--------------------------------------------------------------------------")
-                print("TITLE      | \(self.titleArray)")
-                print("URL        | \(self.urlArray)")
-                print("DATE       | \(self.dateArray)")
-                print("AUTHOR     | \(self.authorArray)")
-                print("THUMBNAIL  | \(self.thumbnailArray)")
-                print("CATEGORIES | \(self.categoryArray)")
-                print("TAGS       | \(self.tagArray)")
         }
+    }
+
+    func confirmNetworkConnection()
+    {
+        reachability?.whenReachable = { reachability in
+            print("Network Connected.")
+            DispatchQueue.global().async
+                {
+                    self.tableView.separatorStyle = .none
+                    self.request()
+            }
+        }
+        
+        reachability?.whenUnreachable = { reachability in
+            print("Network Disconnected")
+            self.activityIndicatorView.stopAnimating()
+            self.titleArray.removeAll()
+            self.tableView.separatorStyle = .none
+            self.tableView.reloadData()
+        }
+        
+        try? reachability?.startNotifier()
+    }
+    
+    func setIndicator()
+    {
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30, y: self.view.frame.height / 2 - 100 , width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)
+        
+        view.addSubview(activityIndicatorView)
+    }
+    
+    func setRefreshControl()
+    {
+        refreshCtl = UIRefreshControl()
+        refreshCtl.tintColor = UIColor.lightGray
+        refreshCtl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refreshCtl)
+    }
+    
+    @objc func refresh()
+    {
+        perform(#selector(delay), with: nil, afterDelay: 2.0)
+    }
+    
+    @objc func delay()
+    {
+        tableView.reloadData()
+        refreshCtl.endRefreshing()
     }
 }
 

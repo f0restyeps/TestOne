@@ -17,21 +17,14 @@ class NewsListTableViewCell: UITableViewCell
     @IBOutlet weak var newsAuthorLabel: UILabel!
     @IBOutlet weak var tagListView: TagListView!
     
-    
-    
-    
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)
     {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-
 }

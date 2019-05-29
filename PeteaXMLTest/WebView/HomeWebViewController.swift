@@ -17,15 +17,9 @@ class HomeWebViewController: UIViewController,WKUIDelegate,UIWebViewDelegate,WKN
     var receiveUrl: String = String()
     var activityIndicatorView: NVActivityIndicatorView!
 
-    
-
     override func viewWillAppear(_ animated: Bool)
     {
         setIndicator()
-        activityIndicatorView.startAnimating()
-        
-        let urlRequest = URLRequest(url:URL(string:receiveUrl)!)
-        wkWebView.load(urlRequest)
     }
     
     override func viewDidLoad()
@@ -35,24 +29,23 @@ class HomeWebViewController: UIViewController,WKUIDelegate,UIWebViewDelegate,WKN
         wkWebView.uiDelegate = self
         wkWebView.navigationDelegate = self
         
+        let urlRequest = URLRequest(url:URL(string:receiveUrl)!)
+        wkWebView.load(urlRequest)
     }
     
     //通信の開始
-    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!)
     {
         print("通信開始")
-        activityIndicatorView.stopAnimating()
+        activityIndicatorView.startAnimating()
     }
  
-    /*
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
     {
         print("通信終了")
         activityIndicatorView.stopAnimating()
     }
- */
-    
+ 
     func setIndicator()
     {
         activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30, y: self.view.frame.height / 2 - 60 - 50 , width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)

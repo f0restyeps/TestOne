@@ -7,21 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C97A3D88CE2C3F2B0603734 /* Pods_PeteaXMLTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC250E60762462B9B4BFCC67 /* Pods_PeteaXMLTest.framework */; };
+		6E04B7B322893B19001B11EA /* SideMenuNavigationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04B7B222893B19001B11EA /* SideMenuNavigationCell.swift */; };
+		6E04B7B522893B55001B11EA /* SideMenuNavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04B7B422893B55001B11EA /* SideMenuNavigationTableViewController.swift */; };
+		6E04B7BD22896E65001B11EA /* SnsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E04B7BC22896E65001B11EA /* SnsWebViewController.swift */; };
+		6E0DFF2B229526DF00B5C915 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0DFF2A229526DF00B5C915 /* SearchViewController.swift */; };
+		6E0DFF2D22952E1700B5C915 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0DFF2C22952E1700B5C915 /* SearchTableViewCell.swift */; };
+		6E109E4722829F36006A89D4 /* HomeWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E109E4622829F36006A89D4 /* HomeWebViewController.swift */; };
+		6E109E492282A79A006A89D4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E109E482282A79A006A89D4 /* WebKit.framework */; };
+		6E1262442266F0250032C42A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1262432266F0250032C42A /* ViewController.swift */; };
+		6E1297262271538A00200AE7 /* DogCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1297252271538A00200AE7 /* DogCategoryTableViewController.swift */; };
+		6E129728227153A800200AE7 /* CatCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E129727227153A800200AE7 /* CatCategoryTableViewController.swift */; };
+		6E12972A227153B600200AE7 /* AnimalCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E129729227153B600200AE7 /* AnimalCategoryTableViewController.swift */; };
+		6E12972C227153C800200AE7 /* MovieCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E12972B227153C800200AE7 /* MovieCategoryTableViewController.swift */; };
+		6E17285A228E47B200210041 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E172859228E47B200210041 /* GoogleService-Info.plist */; };
+		6E172861228E948F00210041 /* SliderTestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E172860228E948F00210041 /* SliderTestCollectionViewCell.swift */; };
+		6E2467422268806C008F83B8 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2467412268806C008F83B8 /* UIView+constraints.swift */; };
+		6E33F72D226960C7003CD2BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E33F72C226960C7003CD2BE /* Main.storyboard */; };
+		6E8FCABE22702FCD00DA446B /* HomeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8FCABD22702FCD00DA446B /* HomeCategoryTableViewController.swift */; };
+		6E8FCAC222704BD000DA446B /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8FCAC122704BD000DA446B /* SliderTableViewCell.swift */; };
+		6EACAF4422811D9B002285B2 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EACAF4322811D9B002285B2 /* NewsListTableViewCell.swift */; };
+		6EC57C7D2293EA2A00AC97E0 /* SliderWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC57C7C2293EA2A00AC97E0 /* SliderWebViewController.swift */; };
+		6EDB270F229E91FF005D1CAA /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDB270D229E91FE005D1CAA /* Codable.swift */; };
 		6EDF5188226423AB003D0E54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDF5187226423AB003D0E54 /* AppDelegate.swift */; };
-		6EDF518A226423AB003D0E54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDF5189226423AB003D0E54 /* ViewController.swift */; };
-		6EDF518D226423AB003D0E54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDF518B226423AB003D0E54 /* Main.storyboard */; };
 		6EDF518F226423AE003D0E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EDF518E226423AE003D0E54 /* Assets.xcassets */; };
 		6EDF5192226423AE003D0E54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDF5190226423AE003D0E54 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69867871C2C386F3E7F2DA38 /* Pods-PeteaXMLTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeteaXMLTest.debug.xcconfig"; path = "Target Support Files/Pods-PeteaXMLTest/Pods-PeteaXMLTest.debug.xcconfig"; sourceTree = "<group>"; };
+		6E04B7B222893B19001B11EA /* SideMenuNavigationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationCell.swift; sourceTree = "<group>"; };
+		6E04B7B422893B55001B11EA /* SideMenuNavigationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuNavigationTableViewController.swift; sourceTree = "<group>"; };
+		6E04B7BC22896E65001B11EA /* SnsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsWebViewController.swift; sourceTree = "<group>"; };
+		6E0DFF2A229526DF00B5C915 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6E0DFF2C22952E1700B5C915 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		6E109E4622829F36006A89D4 /* HomeWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWebViewController.swift; sourceTree = "<group>"; };
+		6E109E482282A79A006A89D4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		6E1262432266F0250032C42A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6E1297252271538A00200AE7 /* DogCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogCategoryTableViewController.swift; sourceTree = "<group>"; };
+		6E129727227153A800200AE7 /* CatCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCategoryTableViewController.swift; sourceTree = "<group>"; };
+		6E129729227153B600200AE7 /* AnimalCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCategoryTableViewController.swift; sourceTree = "<group>"; };
+		6E12972B227153C800200AE7 /* MovieCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategoryTableViewController.swift; sourceTree = "<group>"; };
+		6E172859228E47B200210041 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6E17285B228E505200210041 /* PeteaXMLTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PeteaXMLTest.entitlements; sourceTree = "<group>"; };
+		6E172860228E948F00210041 /* SliderTestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTestCollectionViewCell.swift; sourceTree = "<group>"; };
+		6E2467412268806C008F83B8 /* UIView+constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
+		6E33F72C226960C7003CD2BE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		6E8FCABD22702FCD00DA446B /* HomeCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryTableViewController.swift; sourceTree = "<group>"; };
+		6E8FCAC122704BD000DA446B /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
+		6EACAF4322811D9B002285B2 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
+		6EC57C7C2293EA2A00AC97E0 /* SliderWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderWebViewController.swift; sourceTree = "<group>"; };
+		6EDB270D229E91FE005D1CAA /* Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		6EDF5184226423AB003D0E54 /* PeteaXMLTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeteaXMLTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EDF5187226423AB003D0E54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6EDF5189226423AB003D0E54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6EDF518C226423AB003D0E54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6EDF518E226423AE003D0E54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EDF5191226423AE003D0E54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EDF5193226423AE003D0E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC250E60762462B9B4BFCC67 /* Pods_PeteaXMLTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PeteaXMLTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9796BC7A57E91E9EE2D180 /* Pods-PeteaXMLTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PeteaXMLTest.release.xcconfig"; path = "Target Support Files/Pods-PeteaXMLTest/Pods-PeteaXMLTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +72,75 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E109E492282A79A006A89D4 /* WebKit.framework in Frameworks */,
+				3C97A3D88CE2C3F2B0603734 /* Pods_PeteaXMLTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68C72877E96FBC5416DBA1F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E109E482282A79A006A89D4 /* WebKit.framework */,
+				EC250E60762462B9B4BFCC67 /* Pods_PeteaXMLTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E1297242271535500200AE7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6E1262432266F0250032C42A /* ViewController.swift */,
+				6E8FCABD22702FCD00DA446B /* HomeCategoryTableViewController.swift */,
+				6E1297252271538A00200AE7 /* DogCategoryTableViewController.swift */,
+				6E129727227153A800200AE7 /* CatCategoryTableViewController.swift */,
+				6E129729227153B600200AE7 /* AnimalCategoryTableViewController.swift */,
+				6E12972B227153C800200AE7 /* MovieCategoryTableViewController.swift */,
+				6E04B7B422893B55001B11EA /* SideMenuNavigationTableViewController.swift */,
+				6E0DFF2A229526DF00B5C915 /* SearchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6EBD761F228551B100188962 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6E8FCAC122704BD000DA446B /* SliderTableViewCell.swift */,
+				6EACAF4322811D9B002285B2 /* NewsListTableViewCell.swift */,
+				6E04B7B222893B19001B11EA /* SideMenuNavigationCell.swift */,
+				6E172860228E948F00210041 /* SliderTestCollectionViewCell.swift */,
+				6E0DFF2C22952E1700B5C915 /* SearchTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6EBD7620228551D100188962 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				6E109E4622829F36006A89D4 /* HomeWebViewController.swift */,
+				6E04B7BC22896E65001B11EA /* SnsWebViewController.swift */,
+				6EC57C7C2293EA2A00AC97E0 /* SliderWebViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		6EDB270C229E91FE005D1CAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6EDB270D229E91FE005D1CAA /* Codable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6EDF517B226423AB003D0E54 = {
 			isa = PBXGroup;
 			children = (
 				6EDF5186226423AB003D0E54 /* PeteaXMLTest */,
 				6EDF5185226423AB003D0E54 /* Products */,
+				CB4BD192AECDF228A56CDB4E /* Pods */,
+				68C72877E96FBC5416DBA1F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +156,28 @@
 			isa = PBXGroup;
 			children = (
 				6EDF5187226423AB003D0E54 /* AppDelegate.swift */,
-				6EDF5189226423AB003D0E54 /* ViewController.swift */,
-				6EDF518B226423AB003D0E54 /* Main.storyboard */,
+				6E2467412268806C008F83B8 /* UIView+constraints.swift */,
+				6E1297242271535500200AE7 /* ViewController */,
+				6EBD7620228551D100188962 /* WebView */,
+				6EBD761F228551B100188962 /* Cell */,
+				6EDB270C229E91FE005D1CAA /* Model */,
 				6EDF518E226423AE003D0E54 /* Assets.xcassets */,
+				6E33F72C226960C7003CD2BE /* Main.storyboard */,
 				6EDF5190226423AE003D0E54 /* LaunchScreen.storyboard */,
+				6E17285B228E505200210041 /* PeteaXMLTest.entitlements */,
+				6E172859228E47B200210041 /* GoogleService-Info.plist */,
 				6EDF5193226423AE003D0E54 /* Info.plist */,
 			);
 			path = PeteaXMLTest;
+			sourceTree = "<group>";
+		};
+		CB4BD192AECDF228A56CDB4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69867871C2C386F3E7F2DA38 /* Pods-PeteaXMLTest.debug.xcconfig */,
+				FA9796BC7A57E91E9EE2D180 /* Pods-PeteaXMLTest.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6EDF5196226423AE003D0E54 /* Build configuration list for PBXNativeTarget "PeteaXMLTest" */;
 			buildPhases = (
+				485D03062DE309AAD9106A05 /* [CP] Check Pods Manifest.lock */,
 				6EDF5180226423AB003D0E54 /* Sources */,
 				6EDF5181226423AB003D0E54 /* Frameworks */,
 				6EDF5182226423AB003D0E54 /* Resources */,
+				C3CF08CC2D92A7666CC3C75F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +214,11 @@
 				TargetAttributes = {
 					6EDF5183226423AB003D0E54 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -123,34 +246,113 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EDF5192226423AE003D0E54 /* LaunchScreen.storyboard in Resources */,
+				6E33F72D226960C7003CD2BE /* Main.storyboard in Resources */,
 				6EDF518F226423AE003D0E54 /* Assets.xcassets in Resources */,
-				6EDF518D226423AB003D0E54 /* Main.storyboard in Resources */,
+				6E17285A228E47B200210041 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		485D03062DE309AAD9106A05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PeteaXMLTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3CF08CC2D92A7666CC3C75F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PeteaXMLTest/Pods-PeteaXMLTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CenteredCollectionView/CenteredCollectionView.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CenteredCollectionView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parchment.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PeteaXMLTest/Pods-PeteaXMLTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6EDF5180226423AB003D0E54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EDF518A226423AB003D0E54 /* ViewController.swift in Sources */,
+				6E1262442266F0250032C42A /* ViewController.swift in Sources */,
+				6E8FCAC222704BD000DA446B /* SliderTableViewCell.swift in Sources */,
 				6EDF5188226423AB003D0E54 /* AppDelegate.swift in Sources */,
+				6E0DFF2B229526DF00B5C915 /* SearchViewController.swift in Sources */,
+				6E1297262271538A00200AE7 /* DogCategoryTableViewController.swift in Sources */,
+				6E04B7B522893B55001B11EA /* SideMenuNavigationTableViewController.swift in Sources */,
+				6E04B7BD22896E65001B11EA /* SnsWebViewController.swift in Sources */,
+				6E109E4722829F36006A89D4 /* HomeWebViewController.swift in Sources */,
+				6E0DFF2D22952E1700B5C915 /* SearchTableViewCell.swift in Sources */,
+				6E129728227153A800200AE7 /* CatCategoryTableViewController.swift in Sources */,
+				6E12972A227153B600200AE7 /* AnimalCategoryTableViewController.swift in Sources */,
+				6E2467422268806C008F83B8 /* UIView+constraints.swift in Sources */,
+				6E8FCABE22702FCD00DA446B /* HomeCategoryTableViewController.swift in Sources */,
+				6E04B7B322893B19001B11EA /* SideMenuNavigationCell.swift in Sources */,
+				6EC57C7D2293EA2A00AC97E0 /* SliderWebViewController.swift in Sources */,
+				6E172861228E948F00210041 /* SliderTestCollectionViewCell.swift in Sources */,
+				6EDB270F229E91FF005D1CAA /* Codable.swift in Sources */,
+				6E12972C227153C800200AE7 /* MovieCategoryTableViewController.swift in Sources */,
+				6EACAF4422811D9B002285B2 /* NewsListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6EDF518B226423AB003D0E54 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6EDF518C226423AB003D0E54 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6EDF5190226423AE003D0E54 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -280,8 +482,10 @@
 		};
 		6EDF5197226423AE003D0E54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69867871C2C386F3E7F2DA38 /* Pods-PeteaXMLTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PeteaXMLTest/PeteaXMLTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LAK5JX973M;
 				INFOPLIST_FILE = PeteaXMLTest/Info.plist;
@@ -291,15 +495,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.f0rest.PeteaXMLTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		6EDF5198226423AE003D0E54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA9796BC7A57E91E9EE2D180 /* Pods-PeteaXMLTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PeteaXMLTest/PeteaXMLTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LAK5JX973M;
 				INFOPLIST_FILE = PeteaXMLTest/Info.plist;
@@ -309,7 +515,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.f0rest.PeteaXMLTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

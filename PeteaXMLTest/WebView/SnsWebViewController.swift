@@ -7,24 +7,45 @@
 //
 
 import UIKit
+import WebKit
+import NVActivityIndicatorView
 
-class SnsWebViewController: UIViewController {
-
-    override func viewDidLoad() {
+class SnsWebViewController: UIViewController,WKUIDelegate,UIWebViewDelegate,WKNavigationDelegate
+{
+    @IBOutlet weak var wkWebView: WKWebView!
+    
+    var receiveUrl: String = String()
+    var activityIndicatorView: NVActivityIndicatorView!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setIndicator()
+        
+        wkWebView.uiDelegate = self
+        wkWebView.navigationDelegate = self
+        
+        let urlRequest = URLRequest(url:URL(string:receiveUrl)!)
+        wkWebView.load(urlRequest)
+    }
+    //通信の開始
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!)
+    {
+        print("通信開始")
+        activityIndicatorView.startAnimating()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
+    {
+        print("通信終了")
+        activityIndicatorView.stopAnimating()
     }
-    */
-
+    
+    func setIndicator()
+    {
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30, y: self.view.frame.height / 2 - 60 - 50 , width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)
+        
+        view.addSubview(activityIndicatorView)
+    }
 }

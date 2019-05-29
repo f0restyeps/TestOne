@@ -7,84 +7,270 @@
 //
 
 import UIKit
+import Alamofire
+import SDWebImage
+import TagListView
+import NVActivityIndicatorView
+import Reachability
+import DZNEmptyDataSet
 
-class MovieCategoryTableViewController: UITableViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+class MovieCategoryTableViewController: UITableViewController,TagListViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate
+{
+    var refreshCtl:UIRefreshControl!
+    
+    var activityIndicatorView: NVActivityIndicatorView!
+    var indicatorView: NVActivityIndicatorView!
+    
+    let reachability = Reachability()
+    
+    var titleArray: [String] = [""]
+    var urlJsonArray: [String] = [""]
+    var urlArray: [String] = [""]
+    var dateArray: [String] = [""]
+    var authorArray: [String] = [""]
+    var thumbnailArray: [String] = [""]
+    var thumbnailJsonArray: [String] = [""]
+    var categoryArray: [[String]] = [[""]]
+    var tagArray: [[String]] = [[""]]
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        UserDefaults.standard.removeObject(forKey: "INDEX_PATH")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.emptyDataSetSource = self
+        
+        tableView.separatorStyle = .none
+        tableView.reloadData()
+        confirmNetworkConnection()
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    override func viewDidLoad()
+    {
+        setIndicator()
+        activityIndicatorView.startAnimating()
+        
+        DispatchQueue.main.async
+            {
+                self.setRefreshControl()
+        }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    func setIndicator()
+    {
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30, y: self.view.frame.height / 2 - 60 - 50 , width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)
+        view.addSubview(activityIndicatorView)
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    func setRefreshControl()
+    {
+        refreshCtl = UIRefreshControl()
+        refreshCtl.tintColor = UIColor.lightGray
+        refreshCtl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refreshCtl)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    @objc func refresh()
+    {
+        perform(#selector(delay), with: nil, afterDelay: 2.0)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    @objc func delay()
+    {
+        tableView.reloadData()
+        refreshCtl.endRefreshing()
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    //Setting TableView.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        switch indexPath.row
+        {
+        case 0:
+            
+            return 52
+            
+        default:
+            
+            return 163
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return titleArray.count
     }
-    */
-
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = "読み込みに失敗しました\n"
+        let font = UIFont.systemFont(ofSize: 22)
+        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = "通信状況を確認して下さい\n"
+        let font = UIFont.systemFont(ofSize: 16)
+        return NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
+    {
+        return UIImage(named: "OOPS")
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        switch indexPath.row
+        {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "movieLabelCell", for: indexPath)
+            return cell
+            
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsListTableViewCell
+            
+            cell.tagListView.removeAllTags()
+            
+            //Thumbnail
+            let thumbnailImage = thumbnailArray[indexPath.row]
+            cell.newsImageView.sd_setImage(with: URL(string: thumbnailImage), placeholderImage: UIImage(named: ""))
+            cell.newsImageView.clipsToBounds = true
+            cell.newsImageView.layer.cornerRadius = 0
+            cell.newsImageView.contentMode = UIView.ContentMode.scaleToFill
+            
+            //Title
+            cell.newsTitleLabel.text = self.titleArray[indexPath.row]
+            cell.newsTitleLabel.backgroundColor = UIColor.white
+            cell.newsTitleLabel.textColor = UIColor.darkGray
+            //cell.newsTitleLabel.sizeToFit()
+            
+            //Author
+            cell.newsAuthorLabel.text = self.authorArray[indexPath.row]
+            cell.newsAuthorLabel.backgroundColor = UIColor.white
+            cell.newsAuthorLabel.textColor = UIColor.lightGray
+            cell.newsAuthorLabel.sizeToFit()
+            
+            //Tags
+            let category = categoryArray[indexPath.row]
+            cell.tagListView.addTags(category)
+            
+            //Date
+            var date:String = String()
+            let dateFormatterGet = DateFormatter()
+            let dateFormatterPrint = DateFormatter()
+            
+            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatterPrint.dateFormat = "yyyy年MM月dd日"
+            
+            date = self.dateArray[indexPath.row]
+            if let formatDate = dateFormatterGet.date(from: date)
+            {
+                cell.newsDateLabel.text = dateFormatterPrint.string(from: formatDate)
+                cell.newsDateLabel.backgroundColor = UIColor.white
+                cell.newsDateLabel.textColor = UIColor.lightGray
+            }
+            
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let indexPath = self.tableView.indexPathForSelectedRow
+        {
+            let homeWebViewController = segue.destination as! HomeWebViewController
+            
+            print("\(urlArray[indexPath.row])")
+            homeWebViewController.receiveUrl = urlArray[indexPath.row]
+        }
+    }
+    
+    func confirmNetworkConnection()
+    {
+        reachability?.whenReachable = { reachability in
+            print("Network Connected.")
+            DispatchQueue.global().async
+                {
+                    self.tableView.separatorStyle = .none
+                    self.request()
+            }
+        }
+        
+        reachability?.whenUnreachable = { reachability in
+            print("Network Disconnected")
+            self.activityIndicatorView.stopAnimating()
+            self.titleArray.removeAll()
+            self.tableView.separatorStyle = .none
+            self.tableView.reloadData()
+        }
+        //category/dog/json
+        try? reachability?.startNotifier()
+    }
+    
+    func request()
+    {
+        self.activityIndicatorView.startAnimating()
+        
+        let requestUrl = "https://petea.jp/category/movie/json"
+        
+        Alamofire.request(requestUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: nil)
+            .response
+            {
+                response in
+                guard let data = response.data else
+                {
+                    return
+                }
+                let elements = try! JSONDecoder().decode([Elements].self, from: data)
+                
+                for element in elements
+                {
+                    //Print element.
+                    print("--------------------------------------------------------------------------")
+                    print("TITLE      | \(element.title)")
+                    print("URL        | \(element.permalink)")
+                    print("DATE       | \(element.date)")
+                    print("AUTHOR     | \(element.author)")
+                    print("THUMBNAIL  | \(element.thumbnail)")
+                    print("CATEGORIES | \(element.categories)")
+                    print("TAGS       | \(element.tags)")
+                    
+                    self.titleArray.append(element.title)
+                    self.urlJsonArray.append(element.permalink)
+                    self.dateArray.append(element.date)
+                    self.authorArray.append(element.author)
+                    self.thumbnailJsonArray.append(element.thumbnail)
+                    self.categoryArray.append(element.categories)
+                    self.tagArray.append(element.tags)
+                    
+                    self.thumbnailArray = self.thumbnailJsonArray.map { "https://petea.jp" + $0 }
+                    self.urlArray = self.urlJsonArray.map{ "https://petea.jp" + $0 }
+                    
+                    DispatchQueue.main.async
+                        {
+                            self.tableView.isHidden = false
+                            self.tableView.separatorStyle = .singleLine
+                            self.tableView.reloadData()
+                            self.activityIndicatorView.stopAnimating()
+                    }
+                }
+        }
+    }
 }

@@ -12,30 +12,25 @@ import Parchment
 import Alamofire
 import SideMenu
 
-class ViewController: UIViewController
-{
 
-    
-    
-    let url = "https://petea.jp/dog/feed/"
-    
+class ViewController: UIViewController,UISearchBarDelegate
+{
     
     override func viewDidLoad()
     {
-    
         SideMenuManager.defaultManager.menuFadeStatusBar = false
         SideMenuManager.defaultManager.menuPresentMode = .menuSlideIn
         SideMenuManager.defaultManager.menuEnableSwipeGestures = false
-        SideMenuManager.defaultManager.menuBlurEffectStyle = .dark
+        SideMenuManager.defaultManager.menuBlurEffectStyle = .none
+        SideMenuManager.defaultManager.menuWidth = view.frame.width / 2
         
+        /*
         var titleView : UIImageView
         titleView = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         titleView.contentMode = .scaleAspectFit
-        titleView.image = UIImage(named: "petea_logo")
+        titleView.image = UIImage(named: "logo")
         self.navigationItem.titleView = titleView
-        
-        //self.navigationItem.titleView = UIImageView(image:UIImage(named:"petea_logo.png"))
-        //self.navigationItem.titleView?.contentMode = .scaleAspectFit
+        */
         self.navigationController?.navigationBar.isTranslucent = false
         
         self.navigationController?.navigationBar.shadowImage = UIImage.imageWithColor(color: .white)
@@ -43,9 +38,8 @@ class ViewController: UIViewController
         self.navigationController?.navigationBar.barTintColor = .white
         //Navigation item color.
         self.navigationController?.navigationBar.tintColor = .lightGray
-        //Navigaton title change text and color.HomeCategoryTableViewController
+        //Navigaton title change text and color.
  
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let homeCategoryViewController = storyboard.instantiateViewController(withIdentifier: "HomeCategoryTableViewController")
@@ -57,8 +51,6 @@ class ViewController: UIViewController
         let animalCategoryViewController = storyboard.instantiateViewController(withIdentifier: "AnimalCategoryTableViewController")
         
         let movieCategoryViewController = storyboard.instantiateViewController(withIdentifier: "MovieCategoryTableViewController")
-        
-        
         
         let pagingViewController = FixedPagingViewController(viewControllers: [
             homeCategoryViewController,
@@ -94,29 +86,7 @@ class ViewController: UIViewController
         pagingViewController.borderColor = UIColor.lightGray
         pagingViewController.textColor = UIColor.darkGray
         pagingViewController.selectedTextColor = UIColor.black
-
-       //request()
     }
-    
-    
-    /*
-    func request()
-    {
-        Alamofire.request(url).responseRSS()
-            { (response) -> Void in
-            if let feed: RSSFeed = response.result.value
-            {
-                //Do something with your new RSSFeed object
-                for item in feed.items
-                {
-                    print(item)
-                }
-            }
-        }
-    }
- */
-    
-
 }
 
 extension UIImage

@@ -7,24 +7,56 @@
 //
 
 import UIKit
+import WebKit
+import NVActivityIndicatorView
 
-class SliderWebViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class SliderWebViewController: UIViewController,WKUIDelegate,UIWebViewDelegate,WKNavigationDelegate
+{
+    
+    @IBOutlet weak var wkWebView: WKWebView!
+    
+    var receiveUrl: [String] = []
+    var receiveIndexPath: Int = Int()
+    var activityIndicatorView: NVActivityIndicatorView!
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        setIndicator()
+        
+        receiveIndexPath = UserDefaults.standard.integer(forKey: "INDEX_PATH")
+        receiveUrl = UserDefaults.standard.object(forKey: "URL") as! [String]
+        
+        let urlRequest = URLRequest(url:URL(string:receiveUrl[receiveIndexPath])!)
+        wkWebView.load(urlRequest)
+        
+        print("\(receiveIndexPath)")
+        print("\(receiveUrl[receiveIndexPath])")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        wkWebView.uiDelegate = self
+        wkWebView.navigationDelegate = self
     }
-    */
-
+    //通信の開始
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!)
+    {
+        print("通信開始")
+        activityIndicatorView.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
+    {
+        print("通信終了")
+        activityIndicatorView.stopAnimating()
+    }
+    
+    func setIndicator()
+    {
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30, y: self.view.frame.height / 2 - 60 - 50 , width: 60, height: 60), type: NVActivityIndicatorType.circleStrokeSpin, color: UIColor.lightGray, padding: 0)
+        
+        view.addSubview(activityIndicatorView)
+    }
 }
